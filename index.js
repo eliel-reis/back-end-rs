@@ -19,13 +19,13 @@ cron.schedule("0 6 * * *", () => {
 });
 
 app.post("/cadastrar_cliente", (req, res) => {
-  const nome = req.body.nome;
-  const telefone = req.body.telefone;
-  const email = req.body.email;
-  const data = req.body.data;
-
-  cadastrar_cliente(nome, telefone, email, data);
-  res.status(204).end();
+  const { nome, telefone, email, data } = req.body;
+  const resultado = cadastrar_cliente(nome, telefone, email, data);
+  if (resultado.success) {
+    res.status(200).json({ message: resultado.message });
+  } else {
+    res.status(400).json({ message: resultado.message });
+  }
 });
 
 app.put("/editar_cliente", (req, res) => {
