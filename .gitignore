@@ -1,5 +1,0 @@
-# Ignorar node_modules
-node_modules/
-
-# Ignorar arquivos grandes específicos
-node_modules/whatsapp-web.js/node_modules/puppeteer-core/.local-chromium/
